@@ -1,17 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     function main() {
-        const workoutName = document.querySelector("#workoutName").value
-        const workoutReps = document.querySelector("#reps").value
-        const workoutWeight = document.querySelector("#weight").value
-        const workoutIntensity = document.querySelector("#intensity").value
         document.querySelector("#submitWorkout")
             .addEventListener("click", () => {
+                const workoutName = document.querySelector("#workoutName").value
+                const workoutReps = document.querySelector("#reps").value
+                const workoutWeight = document.querySelector("#weight").value
+                const workoutIntensity = document.querySelector("#intensity").value
                 createWorkout(workoutList, workoutName, workoutReps, workoutWeight, workoutIntensity)
                 renderList()
             })
-        
+
         renderList()
     }
+
     function renderList() {
         const list = document.querySelector("#list")
         list.innerHTML = ""
@@ -29,6 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 <button class="btn btn-sm btn-outline-danger">Delete</button>
               </div>
               `
+            list
+
+
             list.appendChild(newLi)
         })
     }

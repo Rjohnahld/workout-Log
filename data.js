@@ -21,12 +21,12 @@ const workoutList = [{
 }]
 
 
-function createWorkout(workoutList, workoutName, workoutReps, WorkoutWeight, workoutIntensity) {
-    let workout = {
+function createWorkout(workoutList, workoutName, workoutReps, workoutWeight, workoutIntensity) {
+    const workout = {
         workoutId: Math.floor(Math.random() * 10000),
         workoutName,
         workoutReps,
-        WorkoutWeight,
+        workoutWeight,
         workoutIntensity
     }
     workoutList.push(workout)
@@ -40,4 +40,9 @@ function checkColor(intensity){
     }else {
         return "danger text-light"
     }
+}
+
+function deleteWorkout(workoutList, toDeleteWorkoutId){
+    const indexToDelete = workoutList.findIndex(i => i === toDeleteWorkoutId)
+    workoutList.splice(indexToDelete,1)
 }
