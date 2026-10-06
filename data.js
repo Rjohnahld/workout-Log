@@ -43,6 +43,21 @@ function checkColor(intensity){
 }
 
 function deleteWorkout(workoutList, toDeleteWorkoutId){
-    const indexToDelete = workoutList.findIndex(i => i === toDeleteWorkoutId)
-    workoutList.splice(indexToDelete,1)
+    const indexToDelete = workoutList.findIndex(i => i.workoutId === toDeleteWorkoutId)
+    if(indexToDelete != -1){
+        workoutList.splice(indexToDelete,1)
+    }
+}
+
+function updateWorkout(workoutList, workoutId, updateWorkoutName, updateWorkoutReps, updateWorkoutWeight, updateWorkoutIntensity){
+    const indexToUpdate = workoutList.findIndex(i => i.workoutId === workoutId)
+    if(indexToUpdate != -1){
+        workoutList[indexToUpdate] = {
+            workoutId,
+            workoutName: updateWorkoutName,
+            workoutReps: updateWorkoutReps,
+            workoutWeight: updateWorkoutWeight,
+            workoutIntensity: updateWorkoutIntensity
+        } 
+    }
 }
