@@ -49,11 +49,11 @@ function deleteWorkout(workoutList, toDeleteWorkoutId){
     }
 }
 
-function updateWorkout(workoutList, workoutId, updateWorkoutName, updateWorkoutReps, updateWorkoutWeight, updateWorkoutIntensity){
-    const indexToUpdate = workoutList.findIndex(i => i.workoutId === workoutId)
+function updateWorkout(workoutList, toUpdateWorkoutId, updateWorkoutName, updateWorkoutReps, updateWorkoutWeight, updateWorkoutIntensity){
+    const indexToUpdate = workoutList.findIndex(i => i.workoutId === toUpdateWorkoutId)
     if(indexToUpdate != -1){
         workoutList[indexToUpdate] = {
-            workoutId,
+            workoutId: toUpdateWorkoutId,
             workoutName: updateWorkoutName,
             workoutReps: updateWorkoutReps,
             workoutWeight: updateWorkoutWeight,

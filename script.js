@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     text: "Your workout has been added",
                     icon: "success"
                 });
-                renderList()
+                renderList(workoutList)
             })
 
         renderList(workoutList)
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             const updateReps = document.querySelector("#updateReps").value;
                             const updateWeight = document.querySelector("#updateWeight").value;
                             const updateIntensity = document.querySelector("#updateIntensity").value;
-                            updateWorkout(workoutList, updateWorkoutName, updateReps, updateWeight, updateIntensity);
+                            updateWorkout(workoutList, i.workoutId, updateWorkoutName, updateReps, updateWeight, updateIntensity);
                             renderList(workoutList);
                         }
                     })
