@@ -1,8 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
-    function main() {
+    async function main() {
+        workoutList = await getJsonBin()
         // create
         document.querySelector("#submitWorkout")
-            .addEventListener("click", () => {
+            .addEventListener("click", async () => {
                 const workoutName = document.querySelector("#workoutName").value
                 const workoutDate = document.querySelector("#workoutDate").value
                 const workoutSets = document.querySelector("#sets").value
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     text: "Your workout has been added",
                     icon: "success"
                 });
+                await updateJsonBin(workoutList)
                 renderList(workoutList)
             })
 
@@ -63,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
               `
                 newLi.querySelector(".deleteBtn")
-                    .addEventListener("click", () => {
+                    .addEventListener("click", async () => {
                         Swal.fire({
                             title: "Are you sure?",
                             text: "You won't be able to revert this!",
@@ -72,10 +74,11 @@ document.addEventListener("DOMContentLoaded", () => {
                             confirmButtonColor: "#3085d6",
                             cancelButtonColor: "#d33",
                             confirmButtonText: "Yes, delete it!"
-                        }).then((result) => {
+                        }).then(async (result) => {
 
                             if (result.isConfirmed) {
                                 deleteWorkout(workoutList, i.workoutId)
+                                await updateJsonBin(workoutList)
                                 renderList(workoutList)
                                 Swal.fire({
                                     title: "Deleted!",
@@ -88,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     })
 
                 newLi.querySelector(".editBtn")
-                    .addEventListener("click", () => {
+                    .addEventListener("click", async () => {
                         Swal.fire({
                             title: "Update Workout",
                             html: `<div class="row">
@@ -130,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </select>
                         </div>`,
                             showCancelButton: true,
-                            preConfirm: function () {
+                            preConfirm: async function () {
                                 const updateWorkoutName = document.querySelector("#updateWorkoutName").value;
                                 const updateWorkoutDate = document.querySelector("#updateWorkoutDate").value
                                 const updateSets = document.querySelector("#updateSets").value;
@@ -143,6 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                     return
                                 }
                                 updateWorkout(workoutList, i.workoutId, updateWorkoutName.trim(), updateWorkoutDate, updateSets, updateReps, updateWeight, updateIntensity);
+                                await updateJsonBin(workoutList)
                                 renderList(workoutList);
                             }
                         }).then((result) => {
