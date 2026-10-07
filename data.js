@@ -26,6 +26,10 @@ const workoutList = [{
     workoutIntensity: "low"
 }]
 
+const binUrl = "https://api.jsonbin.io/v3"
+const binId = 
+
+
 
 function createWorkout(workoutList, workoutName, workoutDate, workoutSets, workoutReps, workoutWeight, workoutIntensity) {
     const workout = {

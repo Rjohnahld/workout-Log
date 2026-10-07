@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                 const updateReps = document.querySelector("#updateReps").value;
                                 const updateWeight = document.querySelector("#updateWeight").value;
                                 const updateIntensity = document.querySelector("#updateIntensity").value;
-                                const error = validateWorkout(updateWorkoutName, updateSets, updateReps, updateWeight, updateIntensity)
+                                const error = validateWorkout(updateWorkoutName, updateWorkoutDate, updateSets, updateReps, updateWeight, updateIntensity)
                                 if (error) {
                                     Swal.showValidationMessage(error)
                                     return
